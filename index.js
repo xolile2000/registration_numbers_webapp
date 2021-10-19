@@ -29,7 +29,7 @@ app.get("/reg_numbers",function(req,res){
 });
 
 app.post("/reg_numbers",function(req,res){
-   var get = reg.getReg()
+  
 });
 const PORT = process.env.PORT || 3001;
 
