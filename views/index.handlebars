@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/registration_number.css">
+    <title>registration</title>
+</head>
+
+<body>
+
+    <header>
+        <hr>
+        <h1>registration</h1>
+        <hr>
+    </header>
+
+    <form action="/reg_numbers" Method="POST">
+
+       
+            <div class="regInput">
+                <span class="detail">registration number</span>
+                <input type="text" name="regNum" value="" placeholder="enter registration number" class="reg">
+                <button class="addbtn" type="submit" name="button">add</button>
+            </div>
+           
+
+
+            <div class="town">
+                <h2>please select town</h2>
+                <input type="radio" name="town" id="town" value="Cape town">Cape town
+                <input type="radio" name="town" id="town" value="Bellville">Bellville
+                <input type="radio" name="town" id="town" value="Paarl">Stellenbosch
+            </div>
+            
+             <div class="btn">
+           
+                <button class=" townbtn" type="submit" name="button">display specific town</button>
+                <button class="reset">reset</button>
+            </div>
+
+
+          
+          
+
+
+    </form>
+      <div class="pop-up">
+
+          <ul>
+              <li>{{addbtn}}</li>
+          </ul> 
+        </div>
+</body>
