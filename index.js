@@ -23,8 +23,8 @@ app.use(bodyParser.json());
 
 app.get("/reg_numbers",function(req,res){
     var num = req.body.regNum
-    
     reg.regNum(num)
+    
     res.render("index")
 });
 
