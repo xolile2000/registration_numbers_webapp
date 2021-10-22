@@ -1,6 +1,6 @@
 *{
     /* background-image: url('/img/images.jpeg'); */
-    background-color:orange;
+    background: orange;
     text-align: center;
     font-size: 30px;
     /* color: white; */
@@ -24,5 +24,16 @@ h1{
 ul{
     list-style-type: none; 
    }
-
+.display{
+    display: inline;
+    box-sizing: border-box;
+    background-color: yellow;
+    border-radius: 10px;
+    border: 2px solid rgb(8, 16, 87);
+    margin-top: 40px;
+    padding-bottom: 10px;
+}
+.pop-up{
+    margin-top: 30px;
+}
 

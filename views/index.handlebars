@@ -32,25 +32,20 @@
                 <h2>please select town</h2>
                 <input type="radio" name="town" id="town" value="Cape town">Cape town
                 <input type="radio" name="town" id="town" value="Bellville">Bellville
-                <input type="radio" name="town" id="town" value="Paarl">Stellenbosch
+                <input type="radio" name="town" id="town" value="Paarl">Paarl
             </div>
             
              <div class="btn">
            
-                <button class=" townbtn" type="submit" name="button">display specific town</button>
-                <button class="reset">reset</button>
+                <button class=" townbtn" type="submit" name="button">display towns</button>
+                <button class="reset" type="submit" value="reset" name="reset">reset</button>
             </div>
-
-
-          
-          
-
-
     </form>
-      <div class="pop-up">
 
-          <ul>
-              <li>{{addbtn}}</li>
-          </ul> 
+      <div class="pop-up">
+              {{#each regList}}
+              <div class="display">{{this.reg}}</div>
+              {{/each}}
+         
         </div>
 </body>
