@@ -36,12 +36,23 @@ module.exports = function registration(pool) {
     let remove = await pool.query(`delete from regnumbers`);
     return remove.rows
   }
+  
+  const filterTown = async (townString)=>{
+    var townId = await pool.query("select id from towns where townstring = $1", [townString])
+    var IdForTown = townId.rows[0].id
+
+   var displayTown = await pool.query(`select reg from regnumbers where town_id = $1`,[IdForTown])
+    return displayTown.rows
+
+     
+  }
 
 
   return {
     addregNum,
     displayReg,
-    remove
+    remove,
+    filterTown
 
   }
 }

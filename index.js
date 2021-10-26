@@ -72,6 +72,16 @@ app.post("/reg_numbers",async function(req,res){
 
   res.redirect("/")
 });
+
+app.post("/towns",async function(req,res){
+   var radioTown = req.body.city
+  var regies = await reg.filterTown(radioTown)
+  
+res.render('index', {
+  regList : regies
+})
+});
+
 app.get("/reset", async function(req,res){
   await reg.remove()
   res.redirect("/")

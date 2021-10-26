@@ -10,7 +10,7 @@ create table regNumbers (
 	id serial not null primary key,
     reg text not null,
 	town_id int,
-	foreign key (town_id) references townname(id)
+	foreign key (town_id) references towns(id)
 );
 insert into towns(townname,townstring) values ('Cape town','CA');
 insert into towns(townname,townstring) values ('Bellville','CY');

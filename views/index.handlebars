@@ -19,33 +19,39 @@
 
     <form action="/reg_numbers" Method="POST">
 
-       
-            <div class="regInput">
-                <span class="detail">registration number</span>
-                <input type="text" name="regNum" value="" placeholder="enter registration number" class="reg">
-                <button class="addbtn" type="submit" name="button">add</button>
-            </div>
-           
 
+        <div class="regInput">
+            <span class="detail">registration number</span>
+            <input type="text" name="regNum" value="" placeholder="enter registration number" class="reg">
+            <button class="addbtn" type="submit" name="button">add</button>
+        </div>
 
-            <div class="town">
-                <h2>please select town</h2>
-                <input type="radio" name="town" id="town" value="Cape town">Cape town
-                <input type="radio" name="town" id="town" value="Bellville">Bellville
-                <input type="radio" name="town" id="town" value="Paarl">Paarl
-            </div>
-            
-             <div class="btn">
-           
-                <button class=" townbtn" type="submit" name="button">display towns</button>
-                <button class="reset" type="submit" value="reset" name="reset">reset</button>
-            </div>
+    </form>
+    
+
+    <form action="/towns" method="post">
+
+        <div class="town">
+            <h2>please select town</h2>
+            <input type="radio" name="city" id="city" value="CA">Cape town
+            <input type="radio" name="city" id="city" value="CY">Bellville
+            <input type="radio" name="city" id="city" value="CJ">Paarl
+        </div>
+        <button class=" townbtn" type="submit" name="buttons">filter by town</button>
     </form>
 
-      <div class="pop-up">
-              {{#each regList}}
-              <div class="display">{{this.reg}}</div>
-              {{/each}}
-         
-        </div>
+    <div class="btn">
+
+
+        <a href="reset"><button class="counterbtn" type="submit" value="reset" name="reset">reset</button></a>
+    </div>
+
+
+
+    <div class="pop-up">
+        {{#each regList}}
+        <div class="display">{{this.reg}}</div>
+        {{/each}}
+
+    </div>
 </body>
