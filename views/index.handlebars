@@ -16,6 +16,14 @@
         <h1>registration</h1>
         <hr>
     </header>
+       <div>
+                {{#if messages.error}}
+            <span class="error">{{messages.error}} </span>
+            {{/if}}
+              {{!-- {{#if messages.success}} --}}
+            <span class="success">{{messages.success}} </span>
+            {{!-- {{/if}} --}}
+            </div>
 
     <form action="/reg_numbers" Method="POST">
 

@@ -39,4 +39,10 @@ ul{
 .pop-up{
     margin-top: 30px;
 }
+.error{
+    color: red;
+}
+.success{
+    color: aquamarine;
+}
 

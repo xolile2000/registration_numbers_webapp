@@ -1,8 +1,8 @@
 const express = require("express")
 const exphbs = require('express-handlebars');
 const bodyParser = require("body-parser");
-// const flash = require('express-flash');
-// const session = require('express-session');
+const flash = require('express-flash');
+const session = require('express-session');
 const pg = require("pg");
 const registration = require("./registration");
 const { request } = require('express');
@@ -15,11 +15,12 @@ app.set('view engine', 'handlebars');
 
 const Pool = pg.Pool;
 
-// app.use(session({
-//     secret : "<add a secret string here>",
-//     resave: false,
-//     saveUninitialized: true
-//   }));
+app.use(session({
+    secret : "<add a secret string here>",
+    resave: false,
+    saveUninitialized: true
+  }));
+  app.use(flash());
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -56,9 +57,7 @@ const pool = new Pool({
 
 app.get("/reg_numbers", async function(req,res){
   var display = await reg.displayReg()
-  // var num = req.body.regNum
-    // await reg.displayReg()
-    // console.log(display);
+ 
     res.render("index",{
       regList : display
     })
@@ -66,8 +65,15 @@ app.get("/reg_numbers", async function(req,res){
 
 
 app.post("/reg_numbers",async function(req,res){
+
   var num = req.body.regNum
- await reg.addregNum(num)
+if(await reg.duplicate(num === 1)){
+  // await reg.addregNum(num)
+  req.flash('error', "registration numbers already added")
+}else{
+  await reg.addregNum(num)
+  req.flash('error', "registration number has  been succefully added")
+}
 
 
   res.redirect("/")
@@ -84,8 +90,10 @@ res.render('index', {
 
 app.get("/reset", async function(req,res){
   await reg.remove()
+  req.flash('success', "names cleared successfuly");
   res.redirect("/")
 });
+
 
 
 const PORT = process.env.PORT || 3001;
