@@ -67,17 +67,23 @@ app.get("/reg_numbers", async function(req,res){
 app.post("/reg_numbers",async function(req,res){
 
   var num = req.body.regNum
-if(await reg.duplicate(num === 1)){
+  if(await reg.duplicate(num)){
+    await reg.addregNum(num)
+    req.flash('error', "registration numbers has  been added already")
+  }else if(await reg.addregNum(num)){
+    req.flash('error', "registration numbers has  been added successfully")
+  }
+
   // await reg.addregNum(num)
-  req.flash('error', "registration numbers already added")
-}else{
-  await reg.addregNum(num)
-  req.flash('error', "registration number has  been succefully added")
-}
+ 
 
 
-  res.redirect("/")
+res.redirect("/")
 });
+
+
+ 
+
 
 app.post("/towns",async function(req,res){
    var radioTown = req.body.city

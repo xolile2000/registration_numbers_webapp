@@ -49,7 +49,8 @@ module.exports = function registration(pool) {
   const duplicate = async(regNo)=>{
     // var id = await getTownId(regNo)
     let regCheck = await pool.query("select reg from regnumbers where reg = $1", [regNo])
-    return regCheck.rowCount
+    console.log(regCheck.rows)
+    return regCheck.rows
 
   }
 
