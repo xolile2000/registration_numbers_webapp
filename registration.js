@@ -53,6 +53,10 @@ module.exports = function registration(pool) {
     return regCheck.rows
 
   }
+  const showAll = async() =>{
+    let show = await pool.query(`select reg from regnumbers`)
+    return show.rows
+  }
 
 
   return {
@@ -60,7 +64,8 @@ module.exports = function registration(pool) {
     displayReg,
     remove,
     filterTown,
-    duplicate 
+    duplicate ,
+    showAll
 
   }
 }

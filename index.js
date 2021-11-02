@@ -65,17 +65,24 @@ app.get("/reg_numbers", async function(req,res){
 
 
 app.post("/reg_numbers",async function(req,res){
-
+  
   var num = req.body.regNum
-  if(await reg.duplicate(num)){
-    await reg.addregNum(num)
-    req.flash('error', "registration numbers has  been added already")
-  }else if(await reg.addregNum(num)){
-    req.flash('error', "registration numbers has  been added successfully")
+  
+    
+    if(await reg.duplicate(num === 1)){
+      console.log(await reg.duplicate(num) === 1)
+      await reg.addregNum(num)
+      req.flash('error', "registration numbers has  been added already")
+  
+      }else{
+      await reg.addregNum(num)
+      req.flash('error', "registration numbers has  been added successfully")
+    
+    
   }
+  
 
-  // await reg.addregNum(num)
- 
+  
 
 
 res.redirect("/")
@@ -96,7 +103,12 @@ res.render('index', {
 
 app.get("/reset", async function(req,res){
   await reg.remove()
-  req.flash('success', "names cleared successfuly");
+  req.flash('success', "Names cleared successfuly");
+  res.redirect("/")
+});
+
+app.get("/show", async function(req,res){
+  await reg.showAll()
   res.redirect("/")
 });
 

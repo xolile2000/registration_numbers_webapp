@@ -10,7 +10,21 @@
 </head>
 
 <body>
+
    
         {{{body}}}
    
 </body>
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+             var errors = document.querySelector(".error");
+            var success1 = document.querySelector(".success");
+            if ( errors !== " " || success1 !== " " ) {
+                setTimeout(function () {
+                     success1.innerHTML = " ";
+                    errors.innerHTML = " ";
+                   
+                }, 3000);
+            }
+        });
+    </script>
